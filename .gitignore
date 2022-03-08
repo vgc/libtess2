@@ -22,7 +22,10 @@ ehthumbs.db
 Thumbs.db
 
 ## Build dir
-Build/*
+/Build*/
+/build*/
 
-## xcode specific
+## IDE user files
 *xcuserdata*
+CMakeLists.txt.user
+CMakeSettings.json
