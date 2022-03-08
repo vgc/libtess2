@@ -30,13 +30,17 @@
 # - target_include_directories (2.8.11+)
 cmake_minimum_required(VERSION 2.8.11...3.23)
 
-project(libtess2)
-
 # Get version from README file
 file(READ ${CMAKE_CURRENT_LIST_DIR}/README.md README)
 string(REGEX MATCH "Version ([0-9]+).([0-9]+).([0-9]+)" VERSION_MATCH "${README}")
-set(libtess2_VERSION_STRING "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}.${CMAKE_MATCH_3}")
-message(STATUS "Version: ${libtess2_VERSION_STRING}")
+set(libtess2_VERSION_MAJOR "${CMAKE_MATCH_1}" CACHE INTERNAL "")
+set(libtess2_VERSION_MINOR "${CMAKE_MATCH_2}" CACHE INTERNAL "")
+set(libtess2_VERSION_PATCH "${CMAKE_MATCH_3}" CACHE INTERNAL "")
+set(libtess2_VERSION_TWEAK "" CACHE INTERNAL "")
+set(libtess2_VERSION_COUNT "3" CACHE INTERNAL "")
+set(libtess2_VERSION "${libtess2_VERSION_MAJOR}.${libtess2_VERSION_MINOR}.${libtess2_VERSION_PATCH}" CACHE INTERNAL "")
+
+project(libtess2 VERSION "${libtess2_VERSION}")
 
 add_library(libtess2
     ${CMAKE_CURRENT_LIST_DIR}/Source/bucketalloc.c
